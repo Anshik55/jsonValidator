@@ -1,0 +1,64 @@
+{
+    "type": "array",
+    "items": {
+        "type": "object",
+        "properties": {
+            "id": {
+                "type": "integer",
+                "uniqueItems": true
+            },
+
+            "name": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 10
+            },
+
+            "homePhone": {
+                "type": "integer",
+                "uniqueItems": true
+            },
+
+            "mobile": {
+                "type": "integer",
+                "uniqueItems": true
+            },
+
+            "workPhone": {
+                "type": "integer",
+                "uniqueItems": true
+            },
+
+            "DOB": {
+                "type": "integer",
+                "format": "date"
+            },
+
+            "govID": {
+                "type": "integer",
+                "uniqueItems": true
+            },
+
+            "field": {
+                "type": "string",
+                "enum": ["SU","MO","TU","WE","TH","FR","SA"]
+            }
+        },
+        "required": ["id","name"],
+        "anyOf": [{
+            "required" : ["homePhone"]
+           }, {
+            "required" : ["mobile"]
+            }, {
+            "required" : ["workPhone"]
+            }
+           ],
+        "oneOf": [{
+            "required" : ["DOB"]
+           }, {
+            "required" : ["govID"]
+            }
+           ]   
+
+    }
+}
